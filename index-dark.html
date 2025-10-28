@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="de" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Der Rosche Standard — Dark Edition</title>
+  <meta name="description" content="Offener Kennzeichnungs- und Kommunikationsstandard für KI-beteiligte Inhalte. Dark Mode / progressiver Look.">
+  <meta name="theme-color" content="#0b0b0f">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Der Rosche Standard — Dark Edition">
+  <meta property="og:description" content="Transparenz · Verantwortung · Kreativität. Dark Mode / progressiver Look.">
+  <meta property="og:image" content="/og/rosche-standard-dark.png">
+  <style>
+    :root{
+      --bg:#0b0b0f;
+      --bg-2:#12121a;
+      --bg-3:#171724;
+      --fg:#e7e7ef;
+      --muted:#a3a3b2;
+      --line:#242437;
+      --accent:#8a9cff;
+      --accent-2:#16e0a4;
+      --shadow: 0 20px 50px rgba(0,0,0,.45);
+      --radius:20px;
+      --radius-lg:26px;
+      --max:1200px;
+      --green:#3ddf92;
+      --yellow:#ffd84d;
+      --red:#ff6b5f;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:radial-gradient(1200px 700px at 10% 0%, #12121d 0%, transparent 50%),
+                                         radial-gradient(1200px 700px at 90% 10%, #11152b 0%, transparent 55%),
+                                         var(--bg);
+               color:var(--fg);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial,sans-serif;line-height:1.6}
+    a{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+    :where(a,button,input,select,textarea){outline:none}
+    :where(a,button):focus-visible{box-shadow:0 0 0 3px color-mix(in oklab, var(--accent) 75%, transparent);border-radius:14px}
+    .container{max-width:var(--max);margin-inline:auto;padding:0 22px}
+    .nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(130%) blur(8px);background:color-mix(in oklab, var(--bg), transparent 35%);border-bottom:1px solid var(--line)}
+    .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 22px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.2px}
+    .brand-badge{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;color:#0b0b0f;font-size:14px;font-weight:900}
+    .nav-actions{display:flex;align-items:center;gap:10px}
+    .ghost{background:transparent;border:1px solid var(--line);color:var(--fg);padding:10px 14px;border-radius:14px;cursor:pointer}
+    .primary{border:none;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#0b0b0f;padding:12px 16px;border-radius:14px;font-weight:800;cursor:pointer;box-shadow:var(--shadow)}
+    .hero{padding:92px 0 48px;position:relative;overflow:hidden}
+    .title{font-size:clamp(34px,6vw,64px);margin:0 0 10px;letter-spacing:.2px}
+    .subtitle{font-size:clamp(16px,3.2vw,22px);color:var(--muted);margin:0 0 24px}
+    .button-row{display:flex;gap:12px;flex-wrap:wrap}
+    .section{padding:72px 0}
+    .section h2{font-size:clamp(24px,4.6vw,36px);margin:0 0 12px}
+    .lead{color:var(--muted);max-width:900px}
+    .grid-3{display:grid;grid-template-columns:1fr;gap:18px;margin-top:24px}
+    @media(min-width:900px){.grid-3{grid-template-columns:repeat(3,1fr)}}
+    .card{background:linear-gradient(180deg,var(--bg-2),var(--bg-3));border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+    .badge{display:inline-flex;align-items:center;gap:10px;font-weight:800;margin-bottom:8px;letter-spacing:.2px}
+    .card h3{margin:4px 0 8px}
+    .muted{color:var(--muted)}
+    .img-ph{width:100%;aspect-ratio:16/9;border-radius:var(--radius-lg);border:1px dashed var(--line);display:grid;place-items:center;color:var(--muted);background:conic-gradient(from 90deg at 50% 50%, #12121a, #0f0f17, #12121a)}
+    .grid-2{display:grid;grid-template-columns:1fr;gap:22px;margin-top:22px}
+    @media(min-width:960px){.grid-2{grid-template-columns:1.08fr .92fr}}
+    .steps{counter-reset:step;display:grid;gap:12px}
+    .step{display:flex;gap:14px;align-items:flex-start}
+    .dot{counter-increment:step;flex:0 0 auto;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:#10101a;border:1px solid var(--line)}
+    .dot::after{content:counter(step);font-weight:900;color:var(--accent)}
+    footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted)}
+    .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:1000px;border:1px solid var(--line);background:#0f0f17}
+    .switch{position:relative;display:inline-flex;align-items:center;gap:8px}
+    .switch input{appearance:none;width:44px;height:26px;border-radius:999px;background:#1c1c2a;border:1px solid var(--line);position:relative;cursor:pointer}
+    .switch input::after{content:"";position:absolute;inset:3px auto auto 3px;width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,#dedcfb,#a7b1ff);transition:transform .25s ease}
+    .switch input:checked::after{transform:translateX(18px)}
+    @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-wrap container">
+      <div class="brand" aria-label="Rosche Standard">
+        <div class="brand-badge" aria-hidden>RS</div>
+        <span>Der Rosche Standard</span>
+      </div>
+      <div class="nav-actions">
+        <label class="switch" title="Kontrastmodus">
+          <input type="checkbox" id="contrastToggle" aria-label="Akzentwechsel">
+          <span class="muted">Akzent</span>
+        </label>
+        <button class="ghost" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">Downloads</button>
+        <a class="primary" href="downloads/rosche-standard-labels-v1.0.zip">Label herunterladen</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1 class="title">Transparenz. Verantwortung. Kreativität.</h1>
+      <p class="subtitle">Offener Kennzeichnungsstandard für KI-beteiligte Inhalte — in einer klaren, progressiven Dark-Edition.</p>
+      <div class="button-row">
+        <a class="primary" href="downloads/rosche-standard-labels-v1.0.zip">Label-Set v1.0</a>
+        <button class="ghost" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Mehr erfahren</button>
+      </div>
+      <div class="chips" style="margin-top:14px">
+        <span class="chip">Lizenz: CC BY 4.0</span>
+        <span class="chip">Formate: SVG · PNG</span>
+        <span class="chip">Version: v1.0</span>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section class="section" id="about">
+      <div class="container">
+        <h2>Was ist der Rosche Standard?</h2>
+      <p class="lead">Ein offenes Kennzeichnungssystem für KI-beteiligte Inhalte. Es macht sichtbar, in welchem Maß Künstliche Intelligenz an der Entstehung von Texten, Bildern oder Ideen beteiligt war — klar, ehrlich, nachvollziehbar.</p>
+        <div class="grid-2" style="margin-top:24px">
+          <div class="img-ph" role="img" aria-label="Hero Bild – Platzhalter">Bildplatzhalter</div>
+          <div class="card">
+            <h3>Leitidee</h3>
+            <p class="muted">Transparenz stärkt Vertrauen. Der Rosche Standard definiert drei klare Stufen der KI-Beteiligung und setzt einfache, visuelle Marker — vom Social Post bis zum Whitepaper.</p>
+            <ul class="muted">
+              <li>Offen & leicht verständlich</li>
+              <li>Branchenunabhängig einsetzbar</li>
+              <li>Kostenfrei unter Namensnennung</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="levels">
+      <div class="container">
+        <h2 id="levels">Die drei Level</h2>
+        <div class="grid-3">
+          <article class="card">
+            <div class="badge" style="color:var(--green)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <rect x="8" y="8" width="8" height="8" rx="2"></rect>
+                <path d="M3 10h2m14 0h2M3 14h2m14 0h2M10 3v2m4-2v2m-4 14v2m4-2v2"></path>
+              </svg>
+              KI-assistiert
+            </div>
+            <h3>Grün (#3DDF92)</h3>
+            <p class="muted">Der Mensch erstellt den Hauptinhalt; KI hilft bei Struktur oder Formulierung.</p>
+            <div class="img-ph" aria-label="Beispiel – KI-assistiert">Bildplatzhalter</div>
+          </article>
+
+          <article class="card">
+            <div class="badge" style="color:var(--yellow)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="M8 9l-3 3 3 3M16 9l3 3-3 3M13 7l-2 10"></path>
+              </svg>
+              Ko-verfasst
+            </div>
+            <h3>Gelb (#FFD84D)</h3>
+            <p class="muted">Mensch & KI arbeiten gleichberechtigt zusammen — der Output entsteht im Dialog.</p>
+            <div class="img-ph" aria-label="Beispiel – Ko-verfasst">Bildplatzhalter</div>
+          </article>
+
+          <article class="card">
+            <div class="badge" style="color:var(--red)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"></path>
+              </svg>
+              Generiert-redigiert
+            </div>
+            <h3>Rot (#FF6B5F)</h3>
+            <p class="muted">KI generiert Rohinhalte, der Mensch prüft, überarbeitet und trägt Verantwortung.</p>
+            <div class="img-ph" aria-label="Beispiel – Generiert-redigiert">Bildplatzhalter</div>
+          </article>
+        </div>
+
+        <div class="container" id="download" style="margin-top:26px">
+          <div class="card" style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between">
+            <div>
+              <strong>Label-Set v1.0</strong>
+              <p class="muted" style="margin:6px 0 0">SVG & PNG · CC BY 4.0 · Rosche Standard</p>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <a class="ghost" href="downloads/labels/rosche-ki-assistiert.svg" download>SVG (Grün)</a>
+              <a class="ghost" href="downloads/labels/rosche-ko-verfasst.svg" download>SVG (Gelb)</a>
+              <a class="ghost" href="downloads/labels/rosche-generiert-redigiert.svg" download>SVG (Rot)</a>
+              <a class="primary" href="downloads/rosche-standard-labels-v1.0.zip">ZIP-Paket</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Wie wird der Standard genutzt?</h2>
+        <div class="grid-2" style="align-items:center">
+          <div class="steps">
+            <div class="step">
+              <div class="dot" aria-hidden></div>
+              <div>
+                <strong>KI-Beteiligung einschätzen</strong>
+                <p class="muted">Welches Level trifft realistisch zu? Dokumentiere ggf. kurz, welche Tools genutzt wurden.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="dot" aria-hidden></div>
+              <div>
+                <strong>Passendes Label auswählen</strong>
+                <p class="muted">Grün, Gelb oder Rot — konsistent im Projekt anwenden.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="dot" aria-hidden></div>
+              <div>
+                <strong>Symbol einbinden</strong>
+                <p class="muted">SVG/PNG im Layout platzieren und in Alt-Text/Caption den Standard nennen.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="dot" aria-hidden></div>
+              <div>
+                <strong>Hinweis ergänzen</strong>
+                <p class="muted">„Nach Rosche Standard (CC BY 4.0)“ — idealerweise mit Link auf diese Seite.</p>
+              </div>
+            </div>
+          </div>
+          <div class="img-ph" role="img" aria-label="Anwendungsbeispiel – Platzhalter">Mockup-Platzhalter</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Ethik & Lizenz</h2>
+        <div class="card">
+          <p class="muted">Der Rosche Standard ist offen und frei nutzbar unter Namensnennung. Er verpflichtet zu Transparenz und Wahrhaftigkeit — und bewahrt zugleich kreative Freiheit.</p>
+          <p><strong>Lizenz:</strong> Creative Commons <strong>CC BY 4.0</strong> · Namensnennung: Ulf Rosche / Rosche Standard</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Über Ulf Rosche</h2>
+        <div class="grid-2">
+          <div class="img-ph" role="img" aria-label="Portrait Platzhalter">Portrait-Platzhalter</div>
+          <div class="card">
+            <p class="muted">Ulf Rosche entwickelt Konzepte für transparente, ethische KI-Nutzung in Sprache, Kultur und Design. Der Rosche Standard ist Teil seines Engagements für eine verantwortungsvolle, kreative Zukunft.</p>
+            <p class="muted">Kontakt: <a href="mailto:info@rosche-standard.org">info@rosche-standard.org</a> · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 Ulf Rosche · Rosche Standard v1.0 · Dark Edition</p>
+      <p class="muted"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="#download">Downloads</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('contrastToggle');
+    toggle?.addEventListener('change', e => {
+      const on = e.currentTarget.checked;
+      document.documentElement.style.setProperty('--accent', on ? '#16e0a4' : '#8a9cff');
+      document.documentElement.style.setProperty('--accent-2', on ? '#8a9cff' : '#16e0a4');
+    });
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href');
+        if(id && id.length>1){
+          e.preventDefault();
+          const el = document.querySelector(id);
+          el?.scrollIntoView({behavior:'smooth'});
+        }
+      })
+    });
+  </script>
+</body>
+</html>
