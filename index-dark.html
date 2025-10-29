@@ -65,6 +65,7 @@
     .dot{counter-increment:step;flex:0 0 auto;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:#10101a;border:1px solid var(--line)}
     .dot::after{content:counter(step);font-weight:900;color:var(--accent)}
     footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted)}
+ 
     .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
     .chip{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:1000px;border:1px solid var(--line);background:#0f0f17}
     .switch{position:relative;display:inline-flex;align-items:center;gap:8px}
@@ -98,6 +99,7 @@
       <p class="subtitle">Offener Kennzeichnungsstandard für KI-beteiligte Inhalte — in einer klaren, progressiven Dark-Edition.</p>
       <div class="button-row">
         <a class="primary" href="downloads/rosche-standard-labels-v1.0.zip">Label-Set v1.0</a>
+     
         <button class="ghost" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Mehr erfahren</button>
       </div>
       <div class="chips" style="margin-top:14px">
@@ -131,7 +133,8 @@
     <section class="section" aria-labelledby="levels">
       <div class="container">
         <h2 id="levels">Die drei Level</h2>
-        <div class="grid-3">
+        <
+          div class="grid-3">
           <article class="card">
             <div class="badge" style="color:var(--green)">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
