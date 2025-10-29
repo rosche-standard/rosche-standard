@@ -23,3 +23,9 @@
   from = "/dark"
   to = "/index-dark.html"
   status = 200
+
+
+[[redirects]]
+  from = "/labels"
+  to = "/labels.html"
+  status = 200

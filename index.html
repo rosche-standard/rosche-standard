@@ -61,8 +61,22 @@
     .download-row{display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap}
     .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid #e5e7eb;border-radius:18px;padding:10px 14px;background:#fff}
   </style>
-</head>
-<body>
+<<!-- Auto-Switch auf Dark bei System-Dark-Mode (mit Override via localStorage 'rs-theme') -->
+<script>
+(function () {
+  try {
+    var force = localStorage.getItem('rs-theme'); // 'light' | 'dark' | null
+    var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (force === 'dark' || (force !== 'light' && isDark)) {
+      if (!/index-dark\.html(?:$|\?)/.test(location.pathname)) {
+        location.href = 'index-dark.html';
+      }
+    }
+  } catch(e) {}
+})();
+</script>
+</head>ad
+<body
   <header class="hero">
     <div class="container">
       <h1 class="title">Der Rosche Standard</h1>

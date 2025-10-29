@@ -255,7 +255,18 @@
     <div class="container">
       <p>© 2025 Ulf Rosche · Rosche Standard v1.0 · Dark Edition</p>
       <p class="muted"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="#download">Downloads</a></p>
-    </div>
+<div class="container" style="margin-top:8px">
+  <<div class="container" style="margin-top:8px">
+  <p class="muted">Ansicht wechseln:
+    <a href="#" onclick="localStorage.setItem('rs-theme','light');location.href='index.html';return false;">Light</a> ·
+    <a href="#" onclick="localStorage.setItem('rs-theme','dark');alert('Dark-Mode fixiert.');return false;">Dark</a> ·
+    <a href="#" onclick="localStorage.removeItem('rs-theme');alert('Systemeinstellung (Auto) aktiv.');return false;">Auto</a> ·
+    <a href="/labels.html">Labels</a>
+  </p>
+
+  </p>
+  <div>
+/div>
   </footer>
 
   <script>
