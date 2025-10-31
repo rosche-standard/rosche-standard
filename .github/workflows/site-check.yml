@@ -1,0 +1,48 @@
+name: Daily Site Check
+
+on:
+  schedule:
+    # 07:00 UTC ≙ 08:00 Europe/Luxembourg (CET/CEST beachten)
+    - cron: '0 7 * * *'
+  workflow_dispatch:
+
+jobs:
+  link-check:
+    name: Broken links (live + repo)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run lychee link checker
+        uses: lycheeverse/lychee-action@v1
+        with:
+          # Prüft die Live-Seite und alle Links im Repo
+          args: --verbose --no-progress --accept 200,206 https://rosche-standard.org https://rosche-standard.netlify.app .
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  html-validate:
+    name: HTML validity (repo)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install html-validate
+        run: npm i -g html-validate
+      - name: Validate HTML
+        run: html-validate "**/*.html"
+
+  # Optional: Kurzer Lighthouse-Check auf der Live-Seite
+  lighthouse:
+    name: Lighthouse summary (live)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Lighthouse CI
+        run: |
+          npm i -g @lhci/cli
+      - name: Run Lighthouse (live)
+        run: |
+          lhci autorun --collect.url=https://rosche-standard.org --collect.numberOfRuns=1 \
+            --upload.target=temporary-public-storage || echo "Lighthouse finished"
